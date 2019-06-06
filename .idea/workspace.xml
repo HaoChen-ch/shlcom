@@ -7,39 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9907b07-3b85-4fad-8972-1a95a5eaba3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/externalDependencies.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/remote-mappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shlcom.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1.merge.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2.feature_extra.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3sortdata.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4.group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/5.concat.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/CNN.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/catb.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/cnntest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/dnn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/impor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/lgb.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/lgbcv.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/lstmm_.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/rf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/testtdtress.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/tftree.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/xgb.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/xgb.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/xgsave.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testjava/testjava.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/win.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,80 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/lgb.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="23" column="13" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/3sortdata.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
-              <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/CNN.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1474">
-              <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/dnn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="52" column="52" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/xgb.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="902">
-              <caret line="43" column="33" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
+              <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -235,21 +135,6 @@
             <path>
               <item name="shlcom" type="b2602c69:ProjectViewProjectNode" />
               <item name="shlcom" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shlcom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shlcom" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shlcom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shlcom" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shlcom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shlcom" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -431,10 +316,10 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.3sortdata" />
+      <item itemvalue="Python.cnntest" />
       <item itemvalue="Python.lgb" />
       <item itemvalue="Python.lgbcv" />
-      <item itemvalue="Python.cnntest" />
-      <item itemvalue="Python.3sortdata" />
       <item itemvalue="Python.tools" />
     </list>
     <recent_temporary>
@@ -505,7 +390,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="397106000" />
+    <option name="totallyTimeSpent" value="397324000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -517,10 +402,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="549" y="24" width="1271" height="834" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.38510302" visible="true" weight="0.25598678" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.38510302" visible="true" weight="0.25586355" />
       <window_info id="Structure" order="1" sideWeight="0.614897" side_tool="true" weight="0.22121535" />
       <window_info id="Favorites" order="2" sideWeight="0.614897" side_tool="true" weight="0.22121535" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -534,8 +419,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.77665246" weight="0.3525926" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27407408" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.14179105" side_tool="true" weight="0.37123746" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.7782516" visible="true" weight="0.35785952" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.2217484" side_tool="true" weight="0.27313265" />
       <window_info anchor="bottom" id="Python Console" order="13" sideWeight="0.85820895" weight="0.40384614" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -545,6 +430,32 @@
       <window_info anchor="right" id="Database" order="5" sideWeight="0.49697885" weight="0.18923241" />
       <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="6" sideWeight="0.5106383" side_tool="true" weight="0.33102345" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.38510302" visible="true" weight="0.25598678" />
+      <window_info id="Structure" order="1" sideWeight="0.614897" side_tool="true" weight="0.22121535" />
+      <window_info id="Favorites" order="2" sideWeight="0.614897" side_tool="true" weight="0.22121535" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32664436" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.37123746" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39910814" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3277592" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.77665246" weight="0.3525926" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.34962964" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.14179105" side_tool="true" weight="0.37123746" />
+      <window_info anchor="bottom" id="Python Console" order="13" sideWeight="0.85820895" weight="0.40384614" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" sideWeight="0.49113476" visible="true" weight="0.24690339" />
+      <window_info anchor="right" id="SciView" order="4" sideWeight="0.4893617" weight="0.30916846" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.49697885" weight="0.18923241" />
+      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="6" sideWeight="0.5106383" side_tool="true" weight="0.33102345" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -603,12 +514,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/importances_all.csv">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="-132">
           <caret line="27" column="8" selection-start-line="27" selection-end-line="27" selection-end-column="8" />
         </state>
       </provider>
+      <provider editor-type-id="text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
@@ -935,7 +846,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
         </state>
       </provider>
     </entry>
