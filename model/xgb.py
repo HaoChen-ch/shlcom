@@ -44,7 +44,7 @@ xg = xgb.XGBClassifier(max_depth=10,
                        gamma=0.1,
                        subsample=0.65,
                        colsample_bytree=0.8,
-                        # number_of_trees=2500,
+                       # number_of_trees=2500,
                        reg_alpha=0.15
                        )  # ubicomp2018第二名参数
 # xg = xgb.XGBClassifier(max_depth=10,
@@ -63,28 +63,12 @@ print(classification_report(test_y, Prediction_RT, digits=5, ))
 
 # 计算特征值的重要性 全量为87.8%
 #
-# im = pd.DataFrame(xg.feature_importances_)
-# index = pd.DataFrame(train.columns)
-#
-# im = pd.concat((index, im), axis=1)
-# # im.drop(im.columns[1], axis=1, inplace=True)
-# # print(index.shape)
-# im.columns=['name','im']
-# im.sort_values(im.columns[1], inplace=True, ascending=False)
-# im.to_csv('importances_all.csv', index=None)
+im = pd.DataFrame(xg.feature_importances_)
+index = pd.DataFrame(train.columns)
 
-# thresholds = np.sort(xg.feature_importances_)
-# thresholds = [0.3]
-# for thresh in thresholds:
-#     # select features using threshold
-#     selection = SelectFromModel(xg, threshold=thresh, prefit=True)
-#     select_X_train = selection.transform(train_x)
-#     # train model
-#     selection_model = xg
-#     selection_model.fit(select_X_train, train_y)
-#     # eval model
-#     select_X_test = selection.transform(test_x)
-#     y_pred = selection_model.predict(select_X_test)
-#     predictions = [round(value) for value in y_pred]
-#     accuracy = accuracy_score(test_y, predictions)
-#     print("Thresh=%.3f, n=%d, Accuracy: %.2f%%" % (thresh, select_X_train.shape[1], accuracy * 100.0))
+im = pd.concat((index, im), axis=1)
+# im.drop(im.columns[1], axis=1, inplace=True)
+# print(index.shape)
+im.columns = ['name', 'importances']
+im.sort_values(im.columns[1], inplace=True, ascending=False)
+im.to_csv('importances_690_all.csv', index=None)

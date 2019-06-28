@@ -3,11 +3,14 @@ import numpy as np
 import os
 from tsfresh.feature_extraction.feature_calculators import *
 
-data = pd.read_csv("test/data_sorted.csv")
+data = pd.read_csv("data/data_sorted_filter.csv")
 
 data.drop(['label'], axis=1, inplace=True)
-os.chdir('feature_Data_test')
+os.chdir('feature_Data_data_filter')
 print(data.shape)
+data = data.drop(index=[0])
+data = data[0:len(data)].astype("float64")
+print(data.dtypes)
 
 
 # # ---------------------------------fft_coefficient------------------------------------------
@@ -336,16 +339,6 @@ print(mean_abs_change.shape)
 mean_abs_change.to_csv('mean_abs_change.csv', index_label='time')
 print('mean_abs_change')
 # #
-# # # # -------------------------------------------------------------------------------
-mean_second_derivative_central = data.groupby(['time']).apply(
-    lambda group: group.apply(mean_second_derivative_central)
-)
-mean_second_derivative_central.drop(['time'], axis=1, inplace=True)
-
-print(mean_second_derivative_central.shape)
-mean_second_derivative_central.to_csv('mean_second_derivative_central.csv', index_label='time')
-print('mean_second_derivative_central')
-# # #
 # # # # --------------------有问题----算的太慢？-------------------------------------------------------
 # # sample_entropy = data.groupby(['time']).apply(
 # #     lambda group: group.apply(sample_entropy)

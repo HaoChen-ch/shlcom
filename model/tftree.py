@@ -28,13 +28,13 @@ print(test_x.shape, test_y.shape)
 batch_size = 2048  # The number of samples per batch
 num_classes = 9  # 分类的种类
 num_features = train_x.shape[1]
-max_steps = 1000  # 最大的轮次
+max_steps = 2500  # 最大的轮次
 
 # GBDT Parameters
-learning_rate = 0.005  # 0.005 87.13%
+learning_rate = 0.00005  # 0.005 87.13%
 l1_regul = 0.
 l2_regul = 1.
-examples_per_layer = 5000  #5000 86
+examples_per_layer = 50000  #5000 86
 num_trees = 75  # type: int # 75 86%
 max_depth = 10
 
@@ -89,6 +89,17 @@ input_fn = tf.estimator.inputs.numpy_input_fn(
 )
 # Use the Estimator 'evaluate' method
 e = gbdt_model.evaluate(input_fn=input_fn)
+
+
+im = pd.DataFrame(gbdt_model.feature_importances_)
+index = pd.DataFrame(train.columns)
+
+im = pd.concat((index, im), axis=1)
+# im.drop(im.columns[1], axis=1, inplace=True)
+# print(index.shape)
+im.columns=['name','im']
+im.sort_values(im.columns[1], inplace=True, ascending=False)
+im.to_csv('importances_all.csv', index=None)
 
 print("Testing Accuracy:", e['accuracy'])
 # print(classification_report(test_y, e, digits=5))
