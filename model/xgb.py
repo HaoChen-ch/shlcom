@@ -2,7 +2,7 @@ import pandas as pd
 import xgboost as xgb
 from sklearn.metrics import classification_report
 
-train = pd.read_csv('../data/feature.csv')
+train = pd.read_csv('../data/feature_filter.csv')
 y = pd.read_csv('../data/label.csv')
 # train = train[['gy_z.15', 'pitch.15', 'pitch.3', 'gy_z.3', 'acc_z.15', 'acc_z.13', 'magnetic.2', 'acc_z.3', 'acc_z.2',
 #                'pitch.6', 'magnetic.6', 'm_z.15', 'gy_y.13', 'gy_y.8', 'acc_z.6', 'm_z.14', 'm_z.3', 'l_z.11',
@@ -61,14 +61,15 @@ print(test_x.shape, test_x.shape)
 Prediction_RT = xg.predict(test_x.astype("float64"))
 print(classification_report(test_y, Prediction_RT, digits=5, ))
 
+
 # 计算特征值的重要性 全量为87.8%
 #
-im = pd.DataFrame(xg.feature_importances_)
-index = pd.DataFrame(train.columns)
-
-im = pd.concat((index, im), axis=1)
-# im.drop(im.columns[1], axis=1, inplace=True)
-# print(index.shape)
-im.columns = ['name', 'importances']
-im.sort_values(im.columns[1], inplace=True, ascending=False)
-im.to_csv('importances_690_all.csv', index=None)
+# im = pd.DataFrame(xg.feature_importances_)
+# index = pd.DataFrame(train.columns)
+#
+# im = pd.concat((index, im), axis=1)
+# # im.drop(im.columns[1], axis=1, inplace=True)
+# # print(index.shape)
+# im.columns = ['name', 'importances']
+# im.sort_values(im.columns[1], inplace=True, ascending=False)
+# im.to_csv('importances_60s.csv', index=None)

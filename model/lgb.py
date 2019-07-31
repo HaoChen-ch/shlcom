@@ -1,9 +1,10 @@
 import lightgbm as lgb
 import pandas as pd
+import numpy as np
 from sklearn.metrics import classification_report
 import matplotlib.pylab as plt
 
-train = pd.read_csv('../data/feature.csv')
+train = pd.read_csv('../data/feature_filter.csv')
 y = pd.read_csv('../data/label.csv')
 
 train_x = train
@@ -35,15 +36,6 @@ test_y = pd.read_csv("../test/label.csv")
 #      'm_y.19', 'pitch.14', 'roll.3'
 #      ]]
 from sklearn.preprocessing import StandardScaler
-# sc = StandardScaler()
-#
-# sc.fit(train_x)
-#
-# train_x = sc.transform(train_x)
-# test_x = sc.transform(test_x)
-
-# train_y = to_categorical(train_y,num_classes=9)
-# test_y = to_categorical(test_y,num_classes=9)
 
 print(train_x.shape, train_y.shape)
 print(test_x.shape, test_y.shape)
@@ -52,18 +44,39 @@ print(test_x.shape, test_y.shape)
 #     max_depth=15,
 #     num_leaves=200,
 #     # num_boost_round=1000,
-#     learning_rate=0.003
+#     learning_rate=0.04
 # )
 lg = lgb.LGBMClassifier(
-    max_bin=250,
-    max_depth=10,
-    num_leaves=150,
-    learning_rate=0.06
+    max_bin=400,
+    max_depth=8,
+    num_leaves=1024,
+    num_boost_round=500,
+    learning_rate=0.2
 )
 fit = lg.fit(train_x, train_y)
 
-Prediction_RT = lg.predict(test_x)
+Prediction_RT = pd.DataFrame(lg.predict(test_x))
+predict = pd.concat(([Prediction_RT] * 6000), axis=1)
+predict = pd.DataFrame(np.asarray(predict).flatten())
+print(predict.shape)
+y = pd.read_csv("../test/label_60_all.csv", header=None)
+print(test_y.shape)
+print(classification_report(y, predict, digits=5))
 print(classification_report(test_y, Prediction_RT, digits=5))
+
+# print(Prediction_RT.shape)
+# Prediction_RT = pd.DataFrame(Prediction_RT.reshape((Prediction_RT.shape[0], 1)))
+# reslult = pd.concat((Prediction_RT, test_y), axis=1)
+# pd.DataFrame(reslult).to_csv("result_5.csv")
+
+# im = pd.DataFrame(lg.feature_importances_)
+# index = pd.DataFrame(train.columns)
+#
+# im = pd.concat((index, im), axis=1)
+# im.columns = ['name', 'importances']
+# im.sort_values(im.columns[1], inplace=True, ascending=False)
+# im.to_csv('importances_60s.csv', index=None)
+
 # lg.booster_.save_model("lightgbm63.txt")
 
 # im = pd.DataFrame(lg.feature_importances_)

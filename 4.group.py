@@ -3,10 +3,11 @@ import numpy as np
 import os
 from tsfresh.feature_extraction.feature_calculators import *
 
-data = pd.read_csv("data/data_sorted_filter.csv")
-
+# data = pd.read_csv("data/data_sorted_filter_5.csv")
+# os.chdir('feature_Data_train_5')
+data = pd.read_csv("test/data_sorted_5.csv")
+os.chdir('feature_Data_test_5')
 data.drop(['label'], axis=1, inplace=True)
-os.chdir('feature_Data_data_filter')
 print(data.shape)
 data = data.drop(index=[0])
 data = data[0:len(data)].astype("float64")

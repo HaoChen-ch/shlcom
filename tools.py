@@ -30,7 +30,7 @@ def draw2():
     print(data.shape)
     label = pd.read_csv('data/label.csv')
     data_label = pd.concat((data, label), axis=1)
-    data_label.drop(['pressure','time'],axis=1, inplace=True)
+    data_label.drop(['pressure', 'time'], axis=1, inplace=True)
     data_label = data_label[data_label['label'] == 2]
     print(data_label.head)
     ax = data_label.plot(kind='line', figsize=(30, 10))
@@ -43,7 +43,7 @@ def draw3():
     print(data.shape)
     label = pd.read_csv('test/label.csv')
     data_label = pd.concat((data, label), axis=1)
-    data_label.drop(['pressure','time'],axis=1, inplace=True)
+    data_label.drop(['pressure', 'time'], axis=1, inplace=True)
     data_label = data_label[data_label['label'] == 2]
     print(data_label.head)
     ax = data_label.plot(kind='line', figsize=(30, 10))
@@ -51,9 +51,24 @@ def draw3():
     fig.savefig("max_2_test.png")
 
 
+def draw4():
+    data = pd.read_csv('feature_Data_data_filter/mean.csv')
+    print(data.shape)
+    label = pd.read_csv('data/label.csv')
+    data_label = pd.concat((data, label), axis=1)
+    data_label = data_label[["pressure", "label"]]
+    data_label = data_label[data_label['label'] == 8]
+
+    data_label = data_label[['pressure']]
+    print(data_label.head)
+    ax = data_label.plot(kind='line', figsize=(30, 10))
+    fig = ax.get_figure()
+    fig.savefig("mean_8_train_pressure.png")
+
+
 if __name__ == '__main__':
     # draw('data')
     #
     # train = pd.read_csv('data/feature.csv')
     # print(train.shape)
-    draw3()
+    draw4()

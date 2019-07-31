@@ -68,6 +68,8 @@ def dev():
     print(label.shape)
     label = pd.DataFrame(label)
     acc = np.hstack((time, acc))
+    acc_xy = pd.DataFrame(np.sqrt(np.square(acc[:, 1]) + np.square(acc[:, 2])))
+    acc_xyz = pd.DataFrame(np.sqrt(np.square(acc[:, 1]) + np.square(acc[:, 2]) + np.square(acc[:, 3])))
     acc = pd.DataFrame(acc)
     # 输出格式['time', 'acc_x', 'acc_y', 'acc_z']
     # --------------------------------------------------------------------------------------------------
@@ -114,10 +116,10 @@ def dev():
                                       data['pressure']
                                       ]).T)
 
-    fin = pd.concat((acc, ori, ma, remain, label), axis=1)
+    fin = pd.concat((acc, acc_xy, acc_xyz, ori, ma, remain, label), axis=1)
     print(fin.shape)
 
-    fin.to_csv("raw_data.csv", index=False, header=['time', 'acc_x', 'acc_y', 'acc_z',
+    fin.to_csv("raw_data.csv", index=False, header=['time', 'acc_x', 'acc_y', 'acc_z', 'acc_xy', 'acc_xyz',
                                                     'o_x', 'o_y', 'o_z', 'pitch', 'roll', 'yaw',
                                                     'magnetic', 'm_x', 'm_y', 'm_z',
                                                     'gy_x', 'gy_y', 'gy_z',
@@ -153,6 +155,9 @@ def train():
     print(label.shape)
     label = pd.DataFrame(label)
     acc = np.hstack((time, acc))
+    # acc = pd.DataFrame(acc)
+    acc_xy = pd.DataFrame(np.sqrt(np.square(acc[:, 1]) + np.square(acc[:, 2])))
+    acc_xyz = pd.DataFrame(np.sqrt(np.square(acc[:, 1]) + np.square(acc[:, 2]) + np.square(acc[:, 3])))
     acc = pd.DataFrame(acc)
     # 输出格式['time', 'acc_x', 'acc_y', 'acc_z']
     # --------------------------------------------------------------------------------------------------
@@ -199,10 +204,10 @@ def train():
                                       data['pressure']
                                       ]).T)
 
-    fin = pd.concat((acc, ori, ma, remain, label), axis=1)
+    fin = pd.concat((acc, acc_xy, acc_xyz, ori, ma, remain, label), axis=1)
     print(fin.shape)
 
-    fin.to_csv("raw_data.csv", index=False, header=['time', 'acc_x', 'acc_y', 'acc_z',
+    fin.to_csv("raw_data.csv", index=False, header=['time', 'acc_x', 'acc_y', 'acc_z', 'acc_xy', 'acc_xyz',
                                                     'o_x', 'o_y', 'o_z', 'pitch', 'roll', 'yaw',
                                                     'magnetic', 'm_x', 'm_y', 'm_z',
                                                     'gy_x', 'gy_y', 'gy_z',
@@ -213,4 +218,4 @@ def train():
 
 
 if __name__ == '__main__':
-    dev()
+    train()
