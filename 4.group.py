@@ -2,16 +2,72 @@ import pandas as pd
 import numpy as np
 import os
 from tsfresh.feature_extraction.feature_calculators import *
+from scipy.signal import welch, periodogram
+from scipy.stats import entropy, skew, kurtosis, iqr
+import warnings
 
-# data = pd.read_csv("data/data_sorted_filter_5.csv")
-# os.chdir('feature_Data_train_5')
-data = pd.read_csv("test/data_sorted_5.csv")
-os.chdir('feature_Data_test_5')
+warnings.filterwarnings("ignore")
+
+data = pd.read_csv("data/data_unsorted_60.csv")
+os.chdir('feature_unsorted_train')
+
+# data = pd.read_csv("test/data_unsorted_60.csv")
+# os.chdir('feature_unsorted_test')
+
+
+# data.drop(['label','acc_xy','acc_xyz'], axis=1, inplace=True)
 data.drop(['label'], axis=1, inplace=True)
 print(data.shape)
-data = data.drop(index=[0])
+# data = data.drop(index=[0])
 data = data[0:len(data)].astype("float64")
-print(data.dtypes)
+
+
+###-------------------------------fft-------------------------------------------------
+
+
+def fftfun(data):
+    features = np.zeros(21)
+
+    f, Pxx_den = welch(data, 50)
+
+    indices_of_max = Pxx_den.argsort()[-3:][::-1]
+    features[0:3] = (f[indices_of_max])
+    features[3:6] = (Pxx_den[indices_of_max])
+    Y = np.fft.rfft(data)
+    energy_feat = np.sum(np.square(np.abs(Y))) / len(data)
+    entropy_feat = entropy(np.abs(Y))
+
+    features[6] = energy_feat
+    features[7] = entropy_feat
+    total_fft_sum = np.sum(np.square(Pxx_den))
+    bin1 = np.sum(np.square(Pxx_den[:5])) / total_fft_sum
+    bin2 = np.sum(np.square(Pxx_den[5:10])) / total_fft_sum
+    bin3 = np.sum(np.square(Pxx_den[10:15])) / total_fft_sum
+    bin4 = np.sum(np.square(Pxx_den[15:20])) / total_fft_sum
+    bin5 = np.sum(np.square(Pxx_den[20:25])) / total_fft_sum
+    bin6 = np.sum(np.square(Pxx_den[25:30])) / total_fft_sum
+    bin7 = np.sum(np.square(Pxx_den[30:35])) / total_fft_sum
+    bin8 = np.sum(np.square(Pxx_den[35:40])) / total_fft_sum
+    bin9 = np.sum(np.square(Pxx_den[40:45])) / total_fft_sum
+    bin10 = np.sum(np.square(Pxx_den[45:])) / total_fft_sum
+    features[8:18] = [bin1, bin2, bin3, bin4, bin5, bin6, bin7, bin8, bin9, bin10]
+
+    # abs_mean = np.mean(np.abs(data))
+    skewness = skew(Pxx_den)
+    kurtos = kurtosis(Pxx_den)
+    interquart = iqr(data)
+    features[18:21] = [skewness, kurtos, interquart]
+
+    return pd.Series(features)
+
+
+for i in data.columns:
+    res = data.groupby(['time']).apply(
+        lambda group: fftfun(group[i])
+    )
+    res.drop([0], axis=1, inplace=True)
+    res.to_csv(i + '_fft.csv', index_label='time')
+    print(i, res.shape)
 
 
 # # ---------------------------------fft_coefficient------------------------------------------
@@ -66,9 +122,8 @@ time_reversal_asymmetry_statistic = data.groupby(['time']).apply(
     lambda group: fun_time_reversal_asymmetry_statistic(group)
 )
 time_reversal_asymmetry_statistic.drop(['time'], axis=1, inplace=True)
-print(time_reversal_asymmetry_statistic.shape)
 time_reversal_asymmetry_statistic.to_csv('time_reversal_asymmetry_statistic.csv', index_label='time')
-print("time_reversal_asymmetry_statistic")
+print("time_reversal_asymmetry_statistic", time_reversal_asymmetry_statistic.shape)
 
 
 # ---------------------------------cid_ce------------------------------------------
@@ -83,9 +138,8 @@ cid_ce = data.groupby(['time']).apply(
     lambda group: fun_cid_ce(group)
 )
 cid_ce.drop(['time'], axis=1, inplace=True)
-print(cid_ce.shape)
 cid_ce.to_csv('cid_ce.csv', index_label='time')
-print("cid_ce")
+print("cid_ce", cid_ce.shape)
 
 
 # ---------------------------------autocorrelation------------------------------------------
@@ -95,14 +149,12 @@ def fun_autocorrelation(data):
     return re
 
 
-# print(fun_autocorrelation(data))
 autocorrelation = data.groupby(['time']).apply(
     lambda group: fun_autocorrelation(group)
 )
 autocorrelation.drop(['time'], axis=1, inplace=True)
-print(autocorrelation.shape)
 autocorrelation.to_csv('autocorrelation.csv', index_label='time')
-print("autocorrelation")
+print("autocorrelation", autocorrelation.shape)
 
 
 # ---------------------------------ar_coefficient--------shijianchang ----------------------------------
@@ -131,9 +183,8 @@ ratio_beyond_r_sigma = data.groupby(['time']).apply(
     lambda group: fun_ratio_beyond_r_sigma(group)
 )
 ratio_beyond_r_sigma.drop(['time'], axis=1, inplace=True)
-print(ratio_beyond_r_sigma.shape)
 ratio_beyond_r_sigma.to_csv('ratio_beyond_r_sigma.csv', index_label='time')
-print("ratio_beyond_r_sigma")
+print("ratio_beyond_r_sigma", ratio_beyond_r_sigma.shape)
 
 
 # ---------------------------------spkt_welch_density------------------------------------------

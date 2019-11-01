@@ -40,7 +40,10 @@ def train():
     acc_x = pd.DataFrame(rn0 * acc[0] + rn1 * acc[1] + rn2 * acc[2])
     acc_y = pd.DataFrame(rn3 * acc[0] + rn4 * acc[1] + rn5 * acc[2])
     acc_z = pd.DataFrame(rn6 * acc[0] + rn7 * acc[1] + rn8 * acc[2])
-    acc = pd.DataFrame(np.hstack((acc_x, acc_y, acc_z)))
+    acc = np.hstack((acc_x, acc_y, acc_z))
+    acc_xy = pd.DataFrame(np.sqrt(np.square(acc[:, 0]) + np.square(acc[:, 1])))
+    acc_xyz = pd.DataFrame(np.sqrt(np.square(acc[:, 0]) + np.square(acc[:, 1]) + np.square(acc[:, 2])))
+    acc = pd.DataFrame(acc)
     print("acc.shape", acc.shape)
 
     pitch = pd.DataFrame(np.arctan(rn7 / rn8))
@@ -69,10 +72,10 @@ def train():
                                       data['pressure']
                                       ]).T)
 
-    fin = pd.concat((time, acc, ori, magnetic, remain, label), axis=1)
+    fin = pd.concat((time, acc, acc_xy, acc_xyz, ori, magnetic, remain, label), axis=1)
     print("fin.shape", fin.shape)
 
-    fin.to_csv("raw_data.csv", index=False, header=['time', 'acc_x', 'acc_y', 'acc_z',
+    fin.to_csv("raw_data.csv", index=False, header=['time', 'acc_x', 'acc_y', 'acc_z', 'acc_xy', 'acc_xyz',
                                                     'o_w', 'o_x', 'o_y', 'o_z', 'pitch', 'roll', 'yaw',
                                                     'magnetic', 'm_x', 'm_y', 'm_z',
                                                     'gy_x', 'gy_y', 'gy_z',
@@ -117,7 +120,10 @@ def dev():
     acc_x = pd.DataFrame(rn0 * acc[0] + rn1 * acc[1] + rn2 * acc[2])
     acc_y = pd.DataFrame(rn3 * acc[0] + rn4 * acc[1] + rn5 * acc[2])
     acc_z = pd.DataFrame(rn6 * acc[0] + rn7 * acc[1] + rn8 * acc[2])
-    acc = pd.DataFrame(np.hstack((acc_x, acc_y, acc_z)))
+    acc = np.hstack((acc_x, acc_y, acc_z))
+    acc_xy = pd.DataFrame(np.sqrt(np.square(acc[:, 0]) + np.square(acc[:, 1])))
+    acc_xyz = pd.DataFrame(np.sqrt(np.square(acc[:, 0]) + np.square(acc[:, 1]) + np.square(acc[:, 2])))
+    acc = pd.DataFrame(acc)
     print("acc.shape", acc.shape)
 
     pitch = pd.DataFrame(np.arctan(rn7 / rn8))
@@ -146,10 +152,10 @@ def dev():
                                       data['pressure']
                                       ]).T)
 
-    fin = pd.concat((time, acc, ori, magnetic, remain, label), axis=1)
+    fin = pd.concat((time, acc, acc_xy, acc_xyz, ori, magnetic, remain, label), axis=1)
     print("fin.shape", fin.shape)
 
-    fin.to_csv("raw_data.csv", index=False, header=['time', 'acc_x', 'acc_y', 'acc_z',
+    fin.to_csv("raw_data.csv", index=False, header=['time', 'acc_x', 'acc_y', 'acc_z', 'acc_xy', 'acc_xyz',
                                                     'o_w', 'o_x', 'o_y', 'o_z', 'pitch', 'roll', 'yaw',
                                                     'magnetic', 'm_x', 'm_y', 'm_z',
                                                     'gy_x', 'gy_y', 'gy_z',
@@ -160,5 +166,5 @@ def dev():
 
 
 if __name__ == '__main__':
-    # train()
-    dev()
+    train()
+    # dev()

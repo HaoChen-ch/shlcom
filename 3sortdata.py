@@ -7,9 +7,9 @@ import numpy as np
 # 考虑这里开始分 窗口 把time drop掉重新设time！
 def train():
     os.chdir('data')
-    sample = 500
+    sample = 6000
     data = pd.read_csv('raw_data.csv')
-    data.sort_values('time', kind='mergesort', inplace=True)
+    # data.sort_values('time', kind='mergesort', inplace=True)
     data.drop(['time'], inplace=True, axis=1)
 
     time = pd.DataFrame(np.arange(1, (data.shape[0] + 1) / sample))
@@ -28,22 +28,24 @@ def train():
     label = data.groupby(['time']).apply(
         lambda group: Counter(group.label).most_common(1)[0][0]
     )
-
-    label.to_csv('label_5.csv', index=False, header=['label'])
+    print(label.shape)
+    label.to_csv('label_unsorted_60.csv', index=False, header=['label'])
     fin = data.groupby(['time']).apply(
         lambda group: fun(group)
     )
     print(fin.shape)
-    fin.to_csv('data_sorted_filter_5.csv', index=False, chunksize=6000000)
+    fin.to_csv('data_unsorted_60.csv', index=False, chunksize=6000000)
 
 
 def dev():
     sample = 6000
     os.chdir('test')
     data = pd.read_csv('raw_data.csv')
-    data.sort_values('time', kind='mergesort', inplace=True)
+    # data.sort_values('time', kind='mergesort', inplace=True)
     data.drop(['time'], inplace=True, axis=1)
-
+    label = data['label']
+    print(label.shape)
+    label.to_csv('label_unsorted_all.csv', index=False, header=['label'])
     time = pd.DataFrame(np.arange(1, (data.shape[0] + 1) / sample))
     time = pd.concat(([time] * sample), axis=1)
     time = pd.DataFrame(np.asarray(time).flatten(), columns=["time"], index=None)
@@ -70,10 +72,10 @@ def dev():
     )
     print(label.shape)
 
-    label.to_csv('label_5_all.csv', index=False, header=['label'])
-    # data.to_csv('data_sorted_5.csv', index=False, chunksize=6000000)
+    label.to_csv('label_unsorted_60.csv', index=False, header=['label'])
+    data.to_csv('data_unsorted_60.csv', index=False, chunksize=6000000)
 
 
 if __name__ == '__main__':
-    # train()
-    dev()
+    train()
+    # dev()

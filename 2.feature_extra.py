@@ -8,7 +8,7 @@ import os
 # 把加速度传感器的值从对手机坐标系转换成对地坐标系，具体转换公式可以参考Android的getRotationMatrix源码
 
 # 需要重力和磁感应的三轴数值
-
+#计算错误弃用了
 def getRotationMatrix(R, gravity, geomagnetic):
     Ax = gravity[:, 0].T
     Ay = gravity[:, 1].T
